@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Material Design Ex</string>
+    <string name="food_image">food image</string>
+    <string name="back_arrow_icon">back arrow icon</string>
+    <string name="more_vert_icon">more vert icon</string>
+    <string name="edit_icon">edit icon</string>
+    <string name="share_icon">share icon</string>
+    <string name="smile_icon">smile icon</string>
+    <string name="str_fantastic_black_bean_chili">Fantastic Black Bean Chili</string>
+    <string name="str_4_person">4 person</string>
+    <string name="str_55_min">55 min</string>
+    <string name="str_fantastic_black_bean_chili_description">Slow-cooked beef short ribs used two ways. Can anyone say \'M\'m! M\'m! Good\'? Put the meat in a hoagie roll and serve with the reserved broth for dipping. Or, moisten with your favorite sauce.</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="button_add">+ADD</string>
+    <string name="str_ingredient1">1/2 onion, minced</string>
+    <string name="str_ingredient2">2 tablespoons olive oil</string>
+    <string name="str_ingredient3">3 cloves garlic, minced</string>
+    <string name="str_ingredient4">1/2 teaspoon freshly ground black pepper</string>
+    <string name="str_ingredient5">1/3 cup dry bread crumbs</string>
+    <string name="str_ingredient6">1/4 cup packed chopped Italian parsley</string>
+    <string name="str_ingredient7">1 pound ground beef</string>
+    <string name="nutrition">Nutrition</string>
+    <string name="str_calories">Calories</string>
+    <string name="str_331">331</string>
+    <string name="str_protein_g">Protein, g</string>
+    <string name="str_16_3">16.3</string>
+    <string name="str_fat_g">Fat, g</string>
+    <string name="str_20_9">20.9</string>
+    <string name="str_carbs_g">Carbs, g</string>
+    <string name="str_18_9">18.9</string>
 </resources>

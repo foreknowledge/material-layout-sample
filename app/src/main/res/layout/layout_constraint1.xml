@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="5:4"
+            android:background="@drawable/fantastic_black_bean_chili"
+            android:foreground="#4D000000"
+            android:contentDescription="@string/food_image" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin_size"
+            android:src="@drawable/ic_arrow_back"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="@id/imageView"
+            android:contentDescription="@string/back_arrow_icon" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin_size"
+            android:src="@drawable/ic_more_vert"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="@id/imageView"
+            android:contentDescription="@string/more_vert_icon" />
+
+        <ImageButton
+            android:id="@+id/share1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin_size"
+            android:src="@drawable/ic_share"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="@id/imageView"
+            android:contentDescription="@string/share_icon" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin_size"
+            android:src="@drawable/ic_smile"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
+            app:layout_constraintStart_toEndOf="@id/share1"
+            android:contentDescription="@string/smile_icon" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_margin_size"
+            android:src="@drawable/ic_edit"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="@id/imageView"
+            app:layout_constraintEnd_toEndOf="@id/imageView"
+            android:contentDescription="@string/edit_icon" />
+
+        <TextView
+            android:id="@+id/foodName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:layout_marginStart="@dimen/normal_margin_size"
+            android:layout_marginEnd="@dimen/normal_margin_size"
+            android:textSize="26sp"
+            android:textColor="@android:color/black"
+            android:text="@string/str_fantastic_black_bean_chili"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/servings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/str_4_person"
+            android:drawableStart="@drawable/ic_person"
+            android:drawablePadding="4dp"
+            app:layout_constraintStart_toStartOf="@id/foodName"
+            app:layout_constraintTop_toBottomOf="@id/foodName" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/str_55_min"
+            android:drawableStart="@drawable/ic_time"
+            android:drawablePadding="4dp"
+            app:layout_constraintStart_toEndOf="@id/servings"
+            app:layout_constraintTop_toBottomOf="@id/foodName"/>
+
+        <TextView
+            android:id="@+id/foodDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:text="@string/str_fantastic_black_bean_chili_description"
+            app:layout_constraintStart_toStartOf="@id/foodName"
+            app:layout_constraintEnd_toEndOf="@id/foodName"
+            app:layout_constraintTop_toBottomOf="@id/servings" />
+
+        <View
+            android:id="@+id/division1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/foodDesc" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:layout_marginStart="@dimen/normal_margin_size"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="@string/ingredients"
+            app:layout_constraintTop_toBottomOf="@id/division1"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/button_add"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/ingredients"
+            app:layout_constraintBottom_toBottomOf="@id/ingredients" />
+
+        <TextView
+            android:id="@+id/ingredient1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:layout_marginStart="10dp"
+            android:text="@string/str_ingredient1"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="@id/ingredients"
+            app:layout_constraintTop_toBottomOf="@id/ingredients"/>
+
+        <TextView
+            android:id="@+id/ingredient2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/str_ingredient2"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="@id/ingredient1"
+            app:layout_constraintTop_toBottomOf="@id/ingredient1"/>
+
+        <TextView
+            android:id="@+id/ingredient3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/str_ingredient3"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="@id/ingredient2"
+            app:layout_constraintTop_toBottomOf="@id/ingredient2"/>
+
+        <TextView
+            android:id="@+id/ingredient4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/str_ingredient4"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="@id/ingredient3"
+            app:layout_constraintTop_toBottomOf="@id/ingredient3"/>
+
+        <TextView
+            android:id="@+id/ingredient5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/str_ingredient5"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="@id/ingredient4"
+            app:layout_constraintTop_toBottomOf="@id/ingredient4"/>
+
+        <TextView
+            android:id="@+id/ingredient6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/str_ingredient6"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="@id/ingredient5"
+            app:layout_constraintTop_toBottomOf="@id/ingredient5"/>
+
+        <TextView
+            android:id="@+id/ingredient7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="@string/str_ingredient7"
+            android:drawableStart="@drawable/ic_circle"
+            android:drawablePadding="@dimen/normal_margin_size"
+            app:layout_constraintStart_toStartOf="@id/ingredient6"
+            app:layout_constraintTop_toBottomOf="@id/ingredient6"/>
+
+        <View
+            android:id="@+id/division2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ingredient7" />
+
+        <TextView
+            android:id="@+id/nutrition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin_size"
+            android:layout_marginStart="@dimen/normal_margin_size"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="@string/nutrition"
+            app:layout_constraintTop_toBottomOf="@id/division2"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/nutrition1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:text="@string/str_calories"
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@id/nutrition"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/nutrition2"
+            app:layout_constraintBottom_toTopOf="@id/figureNutrition1"/>
+
+        <TextView
+            android:id="@+id/figureNutrition1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="25dp"
+            android:text="@string/str_331"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toBottomOf="@id/nutrition1"
+            app:layout_constraintStart_toStartOf="@id/nutrition1"
+            app:layout_constraintEnd_toEndOf="@id/nutrition1"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/nutrition2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_protein_g"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="@id/nutrition1"
+            app:layout_constraintStart_toEndOf="@id/nutrition1"
+            app:layout_constraintEnd_toStartOf="@id/nutrition3"/>
+
+        <TextView
+            android:id="@+id/figureNutrition2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_16_3"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="@id/figureNutrition1"
+            app:layout_constraintStart_toStartOf="@id/nutrition2"
+            app:layout_constraintEnd_toEndOf="@id/nutrition2"
+            app:layout_constraintBottom_toBottomOf="@id/figureNutrition1"/>
+
+        <TextView
+            android:id="@+id/nutrition3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_fat_g"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="@id/nutrition1"
+            app:layout_constraintStart_toEndOf="@id/nutrition2"
+            app:layout_constraintEnd_toStartOf="@id/nutrition4"/>
+
+        <TextView
+            android:id="@+id/figureNutrition3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_20_9"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="@id/figureNutrition1"
+            app:layout_constraintStart_toStartOf="@id/nutrition3"
+            app:layout_constraintEnd_toEndOf="@id/nutrition3"
+            app:layout_constraintBottom_toBottomOf="@id/figureNutrition1"/>
+
+        <TextView
+            android:id="@+id/nutrition4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_carbs_g"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="@id/nutrition1"
+            app:layout_constraintStart_toEndOf="@id/nutrition3"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/figureNutrition4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/str_18_9"
+            android:textSize="25sp"
+            android:textColor="@android:color/black"
+            app:layout_constraintTop_toTopOf="@id/figureNutrition1"
+            app:layout_constraintStart_toStartOf="@id/nutrition4"
+            app:layout_constraintEnd_toEndOf="@id/nutrition4"
+            app:layout_constraintBottom_toBottomOf="@id/figureNutrition1"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="#C8C8C8"
+            app:layout_constraintTop_toTopOf="@id/nutrition1"
+            app:layout_constraintBottom_toBottomOf="@id/figureNutrition1"
+            app:layout_constraintStart_toEndOf="@id/nutrition1"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="#C8C8C8"
+            app:layout_constraintTop_toTopOf="@id/nutrition2"
+            app:layout_constraintBottom_toBottomOf="@id/figureNutrition2"
+            app:layout_constraintStart_toEndOf="@id/nutrition2"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:background="#C8C8C8"
+            app:layout_constraintTop_toTopOf="@id/nutrition3"
+            app:layout_constraintBottom_toBottomOf="@id/figureNutrition3"
+            app:layout_constraintStart_toEndOf="@id/nutrition3"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
