@@ -17,7 +17,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintDimensionRatio="5:4"
-            android:background="@drawable/fantastic_black_bean_chili"
+            android:src="@drawable/fantastic_black_bean_chili"
+            android:scaleType="centerCrop"
             android:foreground="#4D000000"
             android:contentDescription="@string/food_image" />
 
