@@ -90,7 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/add_image_button"
+            android:contentDescription="@string/add_image_icon"
             android:src="@drawable/ic_add_to_photos"
             app:layout_constraintBottom_toBottomOf="@id/imageAlbum"
             app:layout_constraintStart_toStartOf="@id/albumName"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/normal_margin_size"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/download_button"
+            android:contentDescription="@string/download_icon"
             android:src="@drawable/ic_download"
             app:layout_constraintStart_toEndOf="@id/btnPlus"
             app:layout_constraintTop_toTopOf="@id/btnPlus"
@@ -196,7 +196,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageAlbumSmall"
         app:layout_constraintTop_toTopOf="@id/imageAlbumSmall"
-        android:contentDescription="@string/pause_button" />
+        android:contentDescription="@string/pause_icon" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
