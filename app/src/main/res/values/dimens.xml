@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="normal_margin_size">15dp</dimen>
+    <dimen name="small_album_size">60dp</dimen>
 </resources>

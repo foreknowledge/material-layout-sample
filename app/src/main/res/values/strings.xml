@@ -28,4 +28,14 @@
     <string name="str_20_9">20.9</string>
     <string name="str_carbs_g">Carbs, g</string>
     <string name="str_18_9">18.9</string>
+    <string name="album_image">album_image</string>
+    <string name="search_icon">search icon</string>
+    <string name="str_coloring_book">Coloring Book</string>
+    <string name="str_chance_the_rapper">Chance the Rapper</string>
+    <string name="str_chance_the_rapper_2016">Chance the Rapper · 2016</string>
+    <string name="add_image_button">add image button</string>
+    <string name="download_button">download button</string>
+    <string name="str_14_tracks">14 tracks · 57:14</string>
+    <string name="pause_button">pause button</string>
+    <string name="str_song_title">No Problem (feat. Lil Wayne and 2 Chainz)</string>
 </resources>
