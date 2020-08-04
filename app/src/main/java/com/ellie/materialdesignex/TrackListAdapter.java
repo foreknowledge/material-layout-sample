@@ -21,7 +21,7 @@ public class TrackListAdapter extends RecyclerView.Adapter<TrackListViewHolder> 
     @NonNull
     @Override
     public TrackListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new TrackListViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_track_constraint, parent, false));
+        return new TrackListViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_track_other, parent, false));
     }
 
     @Override
