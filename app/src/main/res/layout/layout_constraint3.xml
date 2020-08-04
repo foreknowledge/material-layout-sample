@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAlbumBg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/albumImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/coloring_book"
+        android:contentDescription="@string/str_coloring_book"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin_size"
+        android:src="@drawable/ic_arrow_down"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/down_arrow_icon"
+        app:layout_constraintTop_toTopOf="@id/albumImage"
+        app:layout_constraintStart_toStartOf="@id/albumImage"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin_size"
+        android:src="@drawable/ic_more_vert"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/more_vert_icon"
+        app:layout_constraintTop_toTopOf="@id/albumImage"
+        app:layout_constraintEnd_toEndOf="@id/albumImage"/>
+
+    <ImageButton
+        android:id="@+id/btnRepeat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_marginBottom="104dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/repeat_icon"
+        android:src="@drawable/ic_repeat"
+        app:layout_constraintTop_toTopOf="@id/songTitle"
+        app:layout_constraintBottom_toBottomOf="@id/albumTitle"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btnShuffle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/shuffle_icon"
+        android:src="@drawable/ic_shuffle"
+        app:layout_constraintTop_toTopOf="@id/songTitle"
+        app:layout_constraintBottom_toBottomOf="@id/albumTitle"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/str_blessings"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/albumImage"
+        app:layout_constraintStart_toEndOf="@id/btnRepeat"
+        app:layout_constraintEnd_toStartOf="@id/btnShuffle"
+        app:layout_constraintBottom_toTopOf="@id/albumTitle"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintVertical_bias="0.3"/>
+
+    <TextView
+        android:id="@+id/albumTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_chance_the_rapper_coloring_book"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toEndOf="@id/songTitle"
+        app:layout_constraintStart_toStartOf="@id/songTitle"
+        app:layout_constraintTop_toBottomOf="@id/songTitle" />
+
+    <ImageButton
+        android:id="@+id/btnPause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/pause_button"
+        android:src="@drawable/ic_pause"
+        app:layout_constraintBottom_toTopOf="@id/progressBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/albumTitle"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_skip_previous"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/skip_previous_icon"
+        app:layout_constraintTop_toTopOf="@id/btnPause"
+        app:layout_constraintBottom_toBottomOf="@id/btnPause"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnPause"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_skip_next"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/skip_next_icon"
+        app:layout_constraintTop_toTopOf="@id/btnPause"
+        app:layout_constraintBottom_toBottomOf="@id/btnPause"
+        app:layout_constraintStart_toEndOf="@id/btnPause"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/str_03_44"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progressBar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/str_01_21"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/progressBar"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="0dp"
+        android:layout_height="5dp"
+        android:progress="70"
+        android:progressTint="@color/colorOrange"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/imageAlbumSmall"
+        style="@android:style/Widget.ProgressBar.Horizontal" />
+
+    <ImageView
+        android:id="@+id/imageAlbumSmall"
+        android:layout_width="@dimen/small_album_size"
+        android:layout_height="0dp"
+        android:src="@drawable/timmys_prayer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:contentDescription="@string/album_image" />
+
+    <TextView
+        android:id="@+id/nextTrack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_margin_size"
+        android:text="@string/str_timmy_s_prayer_sampha"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="@id/imageAlbumSmall"
+        app:layout_constraintBottom_toTopOf="@id/textNextTrack"
+        app:layout_constraintStart_toEndOf="@id/imageAlbumSmall"/>
+
+    <TextView
+        android:id="@+id/textNextTrack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_next_track"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/nextTrack"
+        app:layout_constraintBottom_toBottomOf="@id/imageAlbumSmall"
+        app:layout_constraintStart_toStartOf="@id/nextTrack"/>
+
+    <ImageButton
+        android:layout_width="@dimen/small_album_size"
+        android:layout_height="0dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_playlist"
+        android:contentDescription="@string/playlist_icon"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageAlbumSmall"
+        app:layout_constraintTop_toTopOf="@id/imageAlbumSmall" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

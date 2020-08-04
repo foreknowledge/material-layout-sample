@@ -38,4 +38,16 @@
     <string name="str_14_tracks">14 tracks · 57:14</string>
     <string name="pause_button">pause button</string>
     <string name="str_song_title">No Problem (feat. Lil Wayne and 2 Chainz)</string>
+    <string name="down_arrow_icon">down arrow icon</string>
+    <string name="repeat_icon">repeat icon</string>
+    <string name="playlist_icon">playlist icon</string>
+    <string name="str_next_track">Next Track</string>
+    <string name="str_timmy_s_prayer_sampha">Timmy\'s Prayer - Sampha</string>
+    <string name="shuffle_icon">shuffle icon</string>
+    <string name="str_blessings">Blessings</string>
+    <string name="str_chance_the_rapper_coloring_book">Chance the Rapper - Coloring Book</string>
+    <string name="str_03_44">03:44</string>
+    <string name="str_01_21">01:21</string>
+    <string name="skip_previous_icon">skip previous icon</string>
+    <string name="skip_next_icon">skip next icon</string>
 </resources>
