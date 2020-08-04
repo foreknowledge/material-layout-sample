@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/albumOverview"
@@ -126,7 +127,8 @@
         app:layout_constraintTop_toBottomOf="@id/textTracks"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/progressBar"/>
+        app:layout_constraintBottom_toTopOf="@id/progressBar"
+        tools:listitem="@layout/item_track_constraint" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -137,65 +139,64 @@
         android:progressBackgroundTint="@color/colorAlbumBg"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/currentTrack"
+        app:layout_constraintBottom_toTopOf="@id/imageAlbumSmall"
         style="@android:style/Widget.ProgressBar.Horizontal" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/currentTrack"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorAlbumBg"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ImageView
+        android:id="@+id/imageAlbumSmall"
+        android:layout_width="@dimen/small_album_size"
+        android:layout_height="0dp"
+        android:src="@drawable/coloring_book"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        android:contentDescription="@string/album_image" />
 
-        <ImageView
-            android:id="@+id/imageAlbumSmall"
-            android:layout_width="@dimen/small_album_size"
-            android:layout_height="0dp"
-            android:src="@drawable/coloring_book"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            android:contentDescription="@string/album_image" />
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorAlbumBg"
+        app:layout_constraintTop_toTopOf="@id/imageAlbumSmall"
+        app:layout_constraintBottom_toBottomOf="@id/imageAlbumSmall"
+        app:layout_constraintStart_toEndOf="@id/imageAlbumSmall"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <TextView
-            android:id="@+id/songTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/normal_margin_size"
-            android:text="@string/str_song_title"
-            android:textSize="15sp"
-            android:textColor="@android:color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/artistNameSmall"
-            app:layout_constraintStart_toEndOf="@id/imageAlbumSmall"/>
+    <TextView
+        android:id="@+id/songTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normal_margin_size"
+        android:text="@string/str_song_title"
+        android:textSize="15sp"
+        android:textColor="@android:color/white"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintTop_toTopOf="@id/imageAlbumSmall"
+        app:layout_constraintBottom_toTopOf="@id/artistNameSmall"
+        app:layout_constraintStart_toEndOf="@id/imageAlbumSmall"/>
 
-        <TextView
-            android:id="@+id/artistNameSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/str_chance_the_rapper"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="13sp"
-            app:layout_constraintTop_toBottomOf="@id/songTitle"
-            app:layout_constraintBottom_toBottomOf="@id/imageAlbumSmall"
-            app:layout_constraintStart_toStartOf="@id/songTitle"/>
+    <TextView
+        android:id="@+id/artistNameSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/str_chance_the_rapper"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/songTitle"
+        app:layout_constraintBottom_toBottomOf="@id/imageAlbumSmall"
+        app:layout_constraintStart_toStartOf="@id/songTitle"/>
 
-        <ImageButton
-            android:layout_width="@dimen/small_album_size"
-            android:layout_height="0dp"
-            android:background="#C9272727"
-            android:src="@drawable/ic_pause"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageAlbumSmall"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/pause_button" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageButton
+        android:layout_width="@dimen/small_album_size"
+        android:layout_height="0dp"
+        android:background="#C9272727"
+        android:src="@drawable/ic_pause"
+        app:layout_constraintHorizontal_bias="1"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageAlbumSmall"
+        app:layout_constraintTop_toTopOf="@id/imageAlbumSmall"
+        android:contentDescription="@string/pause_button" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="wrap_content"
