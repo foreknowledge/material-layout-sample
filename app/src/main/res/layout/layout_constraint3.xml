@@ -47,6 +47,7 @@
         android:src="@drawable/ic_repeat"
         app:layout_constraintTop_toTopOf="@id/songTitle"
         app:layout_constraintBottom_toBottomOf="@id/albumTitle"
+        app:layout_constraintEnd_toStartOf="@id/songTitle"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -59,12 +60,14 @@
         android:src="@drawable/ic_shuffle"
         app:layout_constraintTop_toTopOf="@id/songTitle"
         app:layout_constraintBottom_toBottomOf="@id/albumTitle"
+        app:layout_constraintStart_toEndOf="@id/songTitle"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/songTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
         android:text="@string/str_blessings"
         android:textSize="25sp"
@@ -78,8 +81,9 @@
 
     <TextView
         android:id="@+id/albumTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/str_chance_the_rapper_coloring_book"
         android:textColor="@android:color/darker_gray"
         android:textSize="15sp"
