@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/colorAlbumBg"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/albumImage"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="0dp"
+        android:contentDescription="@string/str_coloring_book"
+        android:scaleType="centerCrop"
+        android:src="@drawable/coloring_book" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin_size"
+        android:src="@drawable/ic_arrow_down"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/down_arrow_icon"
+        android:layout_alignTop="@id/albumImage"
+        android:layout_alignStart="@id/albumImage"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin_size"
+        android:src="@drawable/ic_more_vert"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/more_vert_icon"
+        android:layout_alignTop="@id/albumImage"
+        android:layout_alignEnd="@id/albumImage"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/albumImage"
+        android:layout_above="@id/textPlayTime"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/btnRepeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/repeat_icon"
+                android:layout_marginStart="30dp"
+                android:src="@drawable/ic_repeat"
+                android:layout_alignParentStart="true"
+                android:layout_alignTop="@id/currentTrack"
+                android:layout_alignBottom="@id/currentTrack"/>
+
+            <ImageButton
+                android:id="@+id/btnShuffle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/shuffle_icon"
+                android:layout_marginEnd="30dp"
+                android:src="@drawable/ic_shuffle"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/currentTrack"
+                android:layout_alignBottom="@id/currentTrack"/>
+
+            <LinearLayout
+                android:id="@+id/currentTrack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_toEndOf="@id/btnRepeat"
+                android:layout_toStartOf="@id/btnShuffle">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="10dp"
+                    android:text="@string/str_blessings"
+                    android:textSize="25sp"
+                    android:textColor="@android:color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/str_chance_the_rapper_coloring_book"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/normal_margin_size"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_skip_previous"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/skip_previous_icon"
+                tools:ignore="NestedWeights" />
+
+            <ImageButton
+                android:id="@+id/btnPause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/pause_icon"
+                android:src="@drawable/ic_pause"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/ic_skip_next"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/skip_next_icon"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textPlayTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/str_03_44"
+        android:textColor="@android:color/darker_gray"
+        android:layout_alignParentStart="true"
+        android:layout_above="@id/progressBar"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="@string/str_01_21"
+        android:textColor="@android:color/darker_gray"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/progressBar"/>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:progress="70"
+        android:progressTint="@color/colorOrange"
+        android:progressBackgroundTint="@android:color/darker_gray"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@id/imageAlbumSmall"
+        style="@android:style/Widget.ProgressBar.Horizontal" />
+
+    <ImageView
+        android:id="@+id/imageAlbumSmall"
+        android:layout_width="@dimen/small_album_size"
+        android:layout_height="@dimen/small_album_size"
+        android:src="@drawable/timmys_prayer"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/album_image" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorAlbumBg"
+        android:paddingStart="@dimen/normal_margin_size"
+        android:paddingEnd="0dp"
+        android:layout_toEndOf="@id/imageAlbumSmall"
+        android:layout_alignTop="@id/imageAlbumSmall"
+        android:layout_alignBottom="@id/imageAlbumSmall">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="bottom"
+            android:text="@string/str_timmy_s_prayer_sampha"
+            android:textSize="15sp"
+            android:textColor="@android:color/white"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="@string/str_next_track"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:layout_width="@dimen/small_album_size"
+        android:layout_height="@dimen/small_album_size"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_playlist"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@id/imageAlbumSmall"
+        android:contentDescription="@string/playlist_icon" />
+
+</RelativeLayout>
