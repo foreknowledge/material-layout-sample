@@ -14,7 +14,7 @@
         android:layout_alignParentTop="true"/>
 
     <TextView
-        android:id="@+id/songTitle"
+        android:id="@+id/musicTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normal_margin_size"
@@ -33,8 +33,8 @@
         android:layout_marginBottom="@dimen/normal_margin_size"
         android:text="@string/str_chance_the_rapper"
         android:textSize="13sp"
-        android:layout_alignStart="@id/songTitle"
-        android:layout_below="@id/songTitle"/>
+        android:layout_alignStart="@id/musicTitle"
+        android:layout_below="@id/musicTitle"/>
 
     <TextView
         android:id="@+id/duration"
@@ -44,7 +44,7 @@
         android:textSize="13sp"
         android:layout_alignTop="@id/artistName"
         android:layout_toEndOf="@id/artistName"
-        android:layout_below="@id/songTitle" />
+        android:layout_below="@id/musicTitle" />
 
     <ImageButton
         android:id="@+id/btnMore"

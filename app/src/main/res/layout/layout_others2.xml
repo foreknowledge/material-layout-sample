@@ -160,7 +160,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="bottom"
-            android:text="@string/str_song_title"
+            android:text="@string/str_music_title"
             android:textSize="15sp"
             android:textColor="@android:color/white"/>
 

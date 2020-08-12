@@ -23,7 +23,7 @@
         app:layout_constraintGuide_percent="0.12"/>
 
     <TextView
-        android:id="@+id/songTitle"
+        android:id="@+id/musicTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/normal_margin_size"
@@ -44,8 +44,8 @@
         android:layout_marginBottom="@dimen/normal_margin_size"
         android:text="@string/str_chance_the_rapper"
         android:textSize="13sp"
-        app:layout_constraintStart_toStartOf="@id/songTitle"
-        app:layout_constraintTop_toBottomOf="@id/songTitle"
+        app:layout_constraintStart_toStartOf="@id/musicTitle"
+        app:layout_constraintTop_toBottomOf="@id/musicTitle"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <TextView

@@ -45,9 +45,9 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/repeat_icon"
         android:src="@drawable/ic_repeat"
-        app:layout_constraintTop_toTopOf="@id/songTitle"
+        app:layout_constraintTop_toTopOf="@id/musicTitle"
         app:layout_constraintBottom_toBottomOf="@id/albumTitle"
-        app:layout_constraintEnd_toStartOf="@id/songTitle"
+        app:layout_constraintEnd_toStartOf="@id/musicTitle"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -58,13 +58,13 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/shuffle_icon"
         android:src="@drawable/ic_shuffle"
-        app:layout_constraintTop_toTopOf="@id/songTitle"
+        app:layout_constraintTop_toTopOf="@id/musicTitle"
         app:layout_constraintBottom_toBottomOf="@id/albumTitle"
-        app:layout_constraintStart_toEndOf="@id/songTitle"
+        app:layout_constraintStart_toEndOf="@id/musicTitle"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/songTitle"
+        android:id="@+id/musicTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -88,9 +88,9 @@
         android:textColor="@android:color/darker_gray"
         android:textSize="15sp"
         app:layout_constraintBottom_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toEndOf="@id/songTitle"
-        app:layout_constraintStart_toStartOf="@id/songTitle"
-        app:layout_constraintTop_toBottomOf="@id/songTitle" />
+        app:layout_constraintEnd_toEndOf="@id/musicTitle"
+        app:layout_constraintStart_toStartOf="@id/musicTitle"
+        app:layout_constraintTop_toBottomOf="@id/musicTitle" />
 
     <ImageButton
         android:id="@+id/btnPause"

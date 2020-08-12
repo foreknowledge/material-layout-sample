@@ -162,11 +162,11 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/songTitle"
+        android:id="@+id/musicTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/normal_margin_size"
-        android:text="@string/str_song_title"
+        android:text="@string/str_music_title"
         android:textSize="15sp"
         android:textColor="@android:color/white"
         app:layout_constraintVertical_chainStyle="packed"
@@ -181,9 +181,9 @@
         android:text="@string/str_chance_the_rapper"
         android:textColor="@android:color/darker_gray"
         android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@id/songTitle"
+        app:layout_constraintTop_toBottomOf="@id/musicTitle"
         app:layout_constraintBottom_toBottomOf="@id/imageAlbumSmall"
-        app:layout_constraintStart_toStartOf="@id/songTitle"/>
+        app:layout_constraintStart_toStartOf="@id/musicTitle"/>
 
     <ImageButton
         android:layout_width="@dimen/small_album_size"

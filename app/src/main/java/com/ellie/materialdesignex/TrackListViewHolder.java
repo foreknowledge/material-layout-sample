@@ -20,7 +20,7 @@ public class TrackListViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         textTrackNumber = itemView.findViewById(R.id.trackNumber);
-        textTitle = itemView.findViewById(R.id.songTitle);
+        textTitle = itemView.findViewById(R.id.musicTitle);
         textArtist = itemView.findViewById(R.id.artistName);
         textDuration = itemView.findViewById(R.id.duration);
     }
