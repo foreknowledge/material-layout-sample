@@ -53,9 +53,22 @@ public class ImageProvider {
      */
     public Drawable getNextImage() {
         // 현재 index를 1 증가시킨 뒤 해당 이미지 반환.
-        // 증가한 index가 이미지 개수랑 같아지면 0으로 돌아간다.
+        // 증가한 index가 이미지 개수랑 같아지면 0으로 설정한다.
         if (++curIndex == imageList.size()) {
             curIndex = 0;
+        }
+
+        return imageList.get(curIndex);
+    }
+
+    /**
+     * 이전 이미지를 제공한다.
+     */
+    public Drawable getPreviousImage() {
+        // 현재 index를 1 감소시킨 뒤 해당 이미지 반환.
+        // 감소한 index가 0보다 작아지면 마지막 index로 설정한다.
+        if (--curIndex < 0) {
+            curIndex = imageList.size() - 1;
         }
 
         return imageList.get(curIndex);

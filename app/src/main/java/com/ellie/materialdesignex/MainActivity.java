@@ -1,8 +1,10 @@
 package com.ellie.materialdesignex;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -94,8 +96,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // Progress Gesture Detector 에게 터치 이벤트 위임.
-        // Detector가 이벤트 처리를 안했으면 true를 반환한다.
-        return !progressGestureDetector.onTouchEvent(event);
+        progressGestureDetector.onTouchEvent(event);
+
+        return true;
     }
 
     //----------------------------------------------------------
@@ -165,8 +168,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 // Image Gesture Detector 에게 터치 이벤트 위임.
-                // Detector가 이벤트 처리를 안했으면 true를 반환한다.
-                return !imageGestureDetector.onTouchEvent(event);
+                imageGestureDetector.onTouchEvent(event);
+
+                return true;
             }
         });
     }
@@ -179,8 +183,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 // Text Gesture Detector 에게 터치 이벤트 위임.
-                // Detector가 이벤트 처리를 안했으면 true를 반환한다.
-                return !textGestureDetector.onTouchEvent(event);
+                textGestureDetector.onTouchEvent(event);
+
+                return true;
             }
         };
 
@@ -207,7 +212,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 // 튕기기 제스처를 하면 이미지를 바꾼다.
-                changeAlbumImage();
+                //  x 속도가 양수면 (오른쪽 방향) - 다음 이미지로 변경.
+                //  x 속도가 음수면 (왼쪽 방향) - 이전 이미지로 변경.
+                changeAlbumImage(velocityX > 0);
+
                 return false;
             }
         });
@@ -215,10 +223,18 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 앨범 이미지를 바꾼다.
+     * @param isNext true 이면 다음 이미지, false 이면 이전 이미지로 바꾼다.
      */
-    private void changeAlbumImage() {
+    private void changeAlbumImage(boolean isNext) {
+        Drawable newAlbumImage;
+        if (isNext) {
+            newAlbumImage = imageProvider.getNextImage();
+        } else {
+            newAlbumImage = imageProvider.getPreviousImage();
+        }
+
         // 다음 앨범 이미지를 가져와서 설정.
-        albumImage.setImageDrawable(imageProvider.getNextImage());
+        albumImage.setImageDrawable(newAlbumImage);
     }
 
     /**
@@ -230,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onDown(MotionEvent e) {
                 // 텍스트 터치하면 랜덤한 색상으로 변경.
                 changeTextColors(colorProvider.getRandomColor());
+
                 return false;
             }
 
@@ -266,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Text의 색상을 color로 바꾼다.
+     * Text의 색상을 지정한 color로 바꾼다.
      */
     private void changeTextColors(int color) {
         musicTitle.setTextColor(color);
