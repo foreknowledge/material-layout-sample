@@ -18,7 +18,6 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 
 @SuppressLint("ClickableViewAccessibility")
 public class MainActivity extends AppCompatActivity {
-    private final static String TAG = "MainActivity";
     private final static int INIT_PROGRESS = 65;
 
     private int screenWidth;
@@ -26,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private GestureDetectorCompat textGestureDetector;
     private GestureDetectorCompat progressGestureDetector;
 
-    private ProgressState progressState;
+    private ImageProvider imageProvider;
     private ColorProvider colorProvider = new ColorProvider();
+    private ProgressState progressState = new ProgressState();
 
     private ImageView albumImage;
 
@@ -66,7 +66,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        progressState = new ProgressState(INIT_PROGRESS);
+        imageProvider = new ImageProvider(this);
+        albumImage.setImageDrawable(imageProvider.getFirstImage());
+
+        progressState.setProgress(INIT_PROGRESS);
         progressBar.setProgress(progressState.getProgress());
         textCurrentSeconds.setText(convertTimeToText(progressState.getCurrentPlayTime()));
         textTotalSeconds.setText(convertTimeToText(progressState.getTotalPlayTime()));
@@ -127,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void changeAlbumImage() {
-        
+        albumImage.setImageDrawable(imageProvider.getNextImage());
     }
 
     private void initTextGestureDetector() {
