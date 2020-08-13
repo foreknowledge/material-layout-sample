@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ColorChanger {
+public class ColorProvider {
     private List<String> colorList = Arrays.asList(
             "#E74C3C", "#E67E22", "#F5B041", "#F4D03F", "#2ECC71",
             "#27AE60", "#3498DB", "#2980B9", "#9B59B6", "#8E44AD",

@@ -1,13 +1,13 @@
 package com.ellie.materialdesignex;
 
-public class MusicPlayer {
+public class ProgressState {
     private final static int SKIP_UNIT = 10;
     private final static int TOTAL_PLAY_TIME = 5 * 60;
 
     private double currentPlayTime;
     private int progress;
 
-    public MusicPlayer(int progress) {
+    public ProgressState(int progress) {
         this.currentPlayTime = convertProgressToTime(progress);
         this.progress = progress;
     }

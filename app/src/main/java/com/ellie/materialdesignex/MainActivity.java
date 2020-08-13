@@ -3,7 +3,6 @@ package com.ellie.materialdesignex;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private GestureDetectorCompat textGestureDetector;
     private GestureDetectorCompat progressGestureDetector;
 
-    private MusicPlayer musicPlayer;
-    private ColorChanger colorChanger = new ColorChanger();
+    private ProgressState progressState;
+    private ColorProvider colorProvider = new ColorProvider();
 
     private ImageView albumImage;
 
@@ -67,10 +66,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViews() {
-        musicPlayer = new MusicPlayer(INIT_PROGRESS);
-        progressBar.setProgress(musicPlayer.getProgress());
-        textCurrentSeconds.setText(convertTimeToText(musicPlayer.getCurrentPlayTime()));
-        textTotalSeconds.setText(convertTimeToText(musicPlayer.getTotalPlayTime()));
+        progressState = new ProgressState(INIT_PROGRESS);
+        progressBar.setProgress(progressState.getProgress());
+        textCurrentSeconds.setText(convertTimeToText(progressState.getCurrentPlayTime()));
+        textTotalSeconds.setText(convertTimeToText(progressState.getTotalPlayTime()));
     }
 
     private void setHalfScreenWidth() {
@@ -120,29 +119,22 @@ public class MainActivity extends AppCompatActivity {
     private void initImageGestureDetector() {
         imageGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
-            public void onLongPress(MotionEvent e) {
-                Log.d(TAG, "long press");
-            }
-
-            @Override
-            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
-                Log.d(TAG, "onScroll");
-                return false;
-            }
-
-            @Override
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                Log.d(TAG, "onFling");
+                changeAlbumImage();
                 return false;
             }
         });
+    }
+
+    private void changeAlbumImage() {
+        
     }
 
     private void initTextGestureDetector() {
         textGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDown(MotionEvent e) {
-                changeTextColors(colorChanger.getRandomColor());
+                changeTextColors(colorProvider.getRandomColor());
                 return false;
             }
 
@@ -156,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     private void showColorDialog() {
         final ColorPicker colorPicker = new ColorPicker(this);
 
-        colorPicker.setColors(colorChanger.getColorArray())
+        colorPicker.setColors(colorProvider.getColorArray())
                 .setColumns(5)
                 .setOnFastChooseColorListener(new ColorPicker.OnFastChooseColorListener() {
                     @Override
@@ -182,9 +174,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onDoubleTap(MotionEvent e) {
                 int halfScreenWidth = screenWidth / 2;
                 if (e.getX() < halfScreenWidth) {
-                    musicPlayer.skipAgo();
+                    progressState.skipAgo();
                 } else {
-                    musicPlayer.skipLater();
+                    progressState.skipLater();
                 }
 
                 applyChangedProgress();
@@ -197,15 +189,15 @@ public class MainActivity extends AppCompatActivity {
                 float curX = e2.getX();
                 int progress = (int) ((curX / screenWidth) * 100);
 
-                musicPlayer.changeProgress(progress);
+                progressState.changeProgress(progress);
                 applyChangedProgress();
 
                 return false;
             }
 
             private void applyChangedProgress() {
-                progressBar.setProgress(musicPlayer.getProgress());
-                textCurrentSeconds.setText(convertTimeToText(musicPlayer.getCurrentPlayTime()));
+                progressBar.setProgress(progressState.getProgress());
+                textCurrentSeconds.setText(convertTimeToText(progressState.getCurrentPlayTime()));
             }
         });
     }
