@@ -3,14 +3,10 @@ package com.ellie.materialdesignex;
 public class ProgressState {
     private final static int SKIP_UNIT = 10;
     private final static int TOTAL_PLAY_TIME = 5 * 60;
+    private final static int DEFAULT_PROGRESS = 0;
 
     private double currentPlayTime;
-    private int progress;
-
-    public ProgressState(int progress) {
-        this.currentPlayTime = convertProgressToTime(progress);
-        this.progress = progress;
-    }
+    private int progress = DEFAULT_PROGRESS;
 
     public double getCurrentPlayTime() {
         return currentPlayTime;
@@ -18,6 +14,11 @@ public class ProgressState {
 
     public int getProgress() {
         return progress;
+    }
+
+    public void setProgress(int progress) {
+        this.currentPlayTime = convertProgressToTime(progress);
+        this.progress = progress;
     }
 
     public int getTotalPlayTime() {
