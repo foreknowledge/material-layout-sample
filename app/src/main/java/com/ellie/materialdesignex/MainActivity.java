@@ -13,7 +13,8 @@ import androidx.core.view.GestureDetectorCompat;
 
 @SuppressLint("ClickableViewAccessibility")
 public class MainActivity extends AppCompatActivity {
-//    private final static String TAG = "MainActivity";
+    private final static String TAG = "MainActivity";
+    private final static int INIT_PROGRESS = 65;
 
     private int screenWidth;
     private GestureDetectorCompat gestureDetector;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressBar progressBar;
     private TextView textCurrentSeconds;
+    private TextView textTotalSeconds;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.layout_constraint3);
 
         findViews();
+        initViews();
         setHalfScreenWidth();
 
         setTouchEvent();
@@ -36,9 +39,12 @@ public class MainActivity extends AppCompatActivity {
     private void findViews() {
         progressBar = findViewById(R.id.progressBar);
         textCurrentSeconds = findViewById(R.id.currentSeconds);
-        TextView textTotalSeconds = findViewById(R.id.totalSeconds);
+        textTotalSeconds = findViewById(R.id.totalSeconds);
+    }
 
-        musicPlayer = new MusicPlayer(progressBar.getProgress());
+    private void initViews() {
+        musicPlayer = new MusicPlayer(INIT_PROGRESS);
+        progressBar.setProgress(musicPlayer.getProgress());
         textCurrentSeconds.setText(convertTimeToText(musicPlayer.getCurrentPlayTime()));
         textTotalSeconds.setText(convertTimeToText(musicPlayer.getTotalPlayTime()));
     }

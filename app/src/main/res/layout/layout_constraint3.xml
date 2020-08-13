@@ -153,12 +153,12 @@
         android:id="@+id/progressBar"
         android:layout_width="0dp"
         android:layout_height="5dp"
-        android:progress="70"
         android:progressTint="@color/colorOrange"
         android:progressBackgroundTint="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/imageAlbumSmall"
+        tools:progress="70"
         style="@android:style/Widget.ProgressBar.Horizontal" />
 
     <ImageView
