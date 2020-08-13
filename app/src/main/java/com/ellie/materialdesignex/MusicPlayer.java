@@ -7,11 +7,6 @@ public class MusicPlayer {
     private double currentPlayTime;
     private int progress;
 
-    public MusicPlayer(double currentPlayTime) {
-        this.currentPlayTime = currentPlayTime;
-        this.progress = convertTimeToProgress(currentPlayTime);
-    }
-
     public MusicPlayer(int progress) {
         this.currentPlayTime = convertProgressToTime(progress);
         this.progress = progress;
@@ -37,7 +32,12 @@ public class MusicPlayer {
         changeCurrentPlayTime((-1) * SKIP_UNIT);
     }
 
-    public void changeCurrentPlayTime(int seconds) {
+    public void changeProgress(int progress) {
+        this.progress = progress;
+        this.currentPlayTime = convertProgressToTime(progress);
+    }
+
+    private void changeCurrentPlayTime(int seconds) {
         currentPlayTime += seconds;
         progress = convertTimeToProgress(currentPlayTime);
 

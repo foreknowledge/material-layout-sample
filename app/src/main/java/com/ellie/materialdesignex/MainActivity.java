@@ -17,7 +17,7 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 
 @SuppressLint("ClickableViewAccessibility")
 public class MainActivity extends AppCompatActivity {
-    private final static String TAG = "MainActivity";
+//    private final static String TAG = "MainActivity";
     private final static int INIT_PROGRESS = 65;
 
     private int screenWidth;
@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTouchEvent() {
         setTextEvent();
+        setProgressEvent();
         initGestureDetectors();
     }
 
@@ -90,7 +91,21 @@ public class MainActivity extends AppCompatActivity {
         albumTitle.setOnTouchListener(textTouchListener);
     }
 
+    private void setProgressEvent() {
+        progressBar.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+    }
+
     private void initGestureDetectors() {
+        initProgressGestureDetector();
+        initTextGestureDetector();
+    }
+
+    private void initProgressGestureDetector() {
         progressGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
@@ -101,23 +116,25 @@ public class MainActivity extends AppCompatActivity {
                     musicPlayer.skipLater();
                 }
 
+                applyChangedProgress();
+
+                return false;
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                float curX = e2.getX();
+                int progress = (int) ((curX / screenWidth) * 100);
+
+                musicPlayer.changeProgress(progress);
+                applyChangedProgress();
+
+                return false;
+            }
+
+            private void applyChangedProgress() {
                 progressBar.setProgress(musicPlayer.getProgress());
                 textCurrentSeconds.setText(convertTimeToText(musicPlayer.getCurrentPlayTime()));
-
-                return false;
-            }
-        });
-
-        textGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onDown(MotionEvent e) {
-                changeTextColors(colorChanger.getRandomColor());
-                return false;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent e) {
-                showColorDialog();
             }
         });
     }
@@ -134,20 +151,19 @@ public class MainActivity extends AppCompatActivity {
         return "0" + minutes + ":" + txtSeconds;
     }
 
-    private void showColorDialog() {
-        final ColorPicker colorPicker = new ColorPicker(this);
+    private void initTextGestureDetector() {
+        textGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent e) {
+                changeTextColors(colorChanger.getRandomColor());
+                return false;
+            }
 
-        colorPicker.setColors(colorChanger.getColorArray())
-                .setColumns(5)
-                .setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
-                    @Override
-                    public void onChooseColor(int position, int color) {
-                        changeTextColors(color);
-                    }
-
-                    @Override
-                    public void onCancel() { }
-                }).show();
+            @Override
+            public void onLongPress(MotionEvent e) {
+                showColorDialog();
+            }
+        });
     }
 
     private void changeTextColors(int color) {
@@ -155,6 +171,22 @@ public class MainActivity extends AppCompatActivity {
         albumTitle.setTextColor(color);
         btnRepeat.setColorFilter(color);
         btnShuffle.setColorFilter(color);
+    }
+
+    private void showColorDialog() {
+        final ColorPicker colorPicker = new ColorPicker(this);
+
+        colorPicker.setColors(colorChanger.getColorArray())
+                .setColumns(5)
+                .setOnFastChooseColorListener(new ColorPicker.OnFastChooseColorListener() {
+                    @Override
+                    public void setOnFastChooseColorListener(int position, int color) {
+                        changeTextColors(color);
+                    }
+
+                    @Override
+                    public void onCancel() { }
+                }).show();
     }
 
     @Override
