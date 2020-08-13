@@ -17,12 +17,12 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 
 @SuppressLint("ClickableViewAccessibility")
 public class MainActivity extends AppCompatActivity {
-//    private final static String TAG = "MainActivity";
+    private final static String TAG = "MainActivity";
     private final static int INIT_PROGRESS = 65;
 
     private int screenWidth;
-    private GestureDetectorCompat progressGestureDetector;
     private GestureDetectorCompat textGestureDetector;
+    private GestureDetectorCompat progressGestureDetector;
 
     private MusicPlayer musicPlayer;
     private ColorChanger colorChanger = new ColorChanger();
@@ -73,9 +73,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setTouchEvent() {
-        setTextEvent();
-        setProgressEvent();
         initGestureDetectors();
+        setTextEvent();
     }
 
     private void setTextEvent() {
@@ -91,18 +90,47 @@ public class MainActivity extends AppCompatActivity {
         albumTitle.setOnTouchListener(textTouchListener);
     }
 
-    private void setProgressEvent() {
-        progressBar.setOnTouchListener(new View.OnTouchListener() {
+    private void initGestureDetectors() {
+        initTextGestureDetector();
+        initProgressGestureDetector();
+    }
+
+    private void initTextGestureDetector() {
+        textGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onDown(MotionEvent e) {
+                changeTextColors(colorChanger.getRandomColor());
                 return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                showColorDialog();
             }
         });
     }
 
-    private void initGestureDetectors() {
-        initProgressGestureDetector();
-        initTextGestureDetector();
+    private void showColorDialog() {
+        final ColorPicker colorPicker = new ColorPicker(this);
+
+        colorPicker.setColors(colorChanger.getColorArray())
+                .setColumns(5)
+                .setOnFastChooseColorListener(new ColorPicker.OnFastChooseColorListener() {
+                    @Override
+                    public void setOnFastChooseColorListener(int position, int color) {
+                        changeTextColors(color);
+                    }
+
+                    @Override
+                    public void onCancel() { }
+                }).show();
+    }
+
+    private void changeTextColors(int color) {
+        musicTitle.setTextColor(color);
+        albumTitle.setTextColor(color);
+        btnRepeat.setColorFilter(color);
+        btnShuffle.setColorFilter(color);
     }
 
     private void initProgressGestureDetector() {
@@ -149,44 +177,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return "0" + minutes + ":" + txtSeconds;
-    }
-
-    private void initTextGestureDetector() {
-        textGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            public boolean onDown(MotionEvent e) {
-                changeTextColors(colorChanger.getRandomColor());
-                return false;
-            }
-
-            @Override
-            public void onLongPress(MotionEvent e) {
-                showColorDialog();
-            }
-        });
-    }
-
-    private void changeTextColors(int color) {
-        musicTitle.setTextColor(color);
-        albumTitle.setTextColor(color);
-        btnRepeat.setColorFilter(color);
-        btnShuffle.setColorFilter(color);
-    }
-
-    private void showColorDialog() {
-        final ColorPicker colorPicker = new ColorPicker(this);
-
-        colorPicker.setColors(colorChanger.getColorArray())
-                .setColumns(5)
-                .setOnFastChooseColorListener(new ColorPicker.OnFastChooseColorListener() {
-                    @Override
-                    public void setOnFastChooseColorListener(int position, int color) {
-                        changeTextColors(color);
-                    }
-
-                    @Override
-                    public void onCancel() { }
-                }).show();
     }
 
     @Override
