@@ -143,12 +143,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onLongPress(MotionEvent e) {
-                showColorDialog();
+                showColorPickerDialog();
             }
         });
     }
 
-    private void showColorDialog() {
+    private void showColorPickerDialog() {
         final ColorPicker colorPicker = new ColorPicker(this);
 
         colorPicker.setColors(colorProvider.getColorArray())
