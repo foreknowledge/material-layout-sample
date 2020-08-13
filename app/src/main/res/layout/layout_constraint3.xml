@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/colorAlbumBg"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -128,33 +129,35 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
+        android:id="@+id/currentSeconds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/str_03_44"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/progressBar"/>
+        app:layout_constraintBottom_toTopOf="@id/progressBar"
+        tools:text="03:44"/>
 
     <TextView
+        android:id="@+id/totalSeconds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/str_01_21"
         android:textColor="@android:color/darker_gray"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/progressBar"/>
+        app:layout_constraintBottom_toTopOf="@id/progressBar"
+        tools:text="05:00"/>
 
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="0dp"
         android:layout_height="5dp"
-        android:progress="70"
         android:progressTint="@color/colorOrange"
         android:progressBackgroundTint="@android:color/darker_gray"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/imageAlbumSmall"
+        tools:progress="70"
         style="@android:style/Widget.ProgressBar.Horizontal" />
 
     <ImageView
