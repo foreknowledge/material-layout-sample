@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
     private int screenWidth;
     private GestureDetectorCompat gestureDetector;
     private MusicPlayer musicPlayer;
+    private ColorChanger colorChanger = new ColorChanger();
+
+    private TextView musicTitle;
+    private TextView albumTitle;
+    private ImageButton btnRepeat;
+    private ImageButton btnShuffle;
 
     private ProgressBar progressBar;
     private TextView textCurrentSeconds;
@@ -37,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        musicTitle = findViewById(R.id.musicTitle);
+        albumTitle = findViewById(R.id.albumTitle);
+        btnRepeat = findViewById(R.id.btnRepeat);
+        btnShuffle = findViewById(R.id.btnShuffle);
+
         progressBar = findViewById(R.id.progressBar);
         textCurrentSeconds = findViewById(R.id.currentSeconds);
         textTotalSeconds = findViewById(R.id.totalSeconds);
@@ -56,7 +69,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setTouchEvent() {
+        setTextEvent();
         initGestureDetector();
+    }
+
+    private void setTextEvent() {
+        View.OnTouchListener textTouchListener = new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    changeTextColors();
+                }
+                return true;
+            }
+        };
+
+        musicTitle.setOnTouchListener(textTouchListener);
+        albumTitle.setOnTouchListener(textTouchListener);
+    }
+
+    private void changeTextColors() {
+        int color = colorChanger.getRandomColor();
+        musicTitle.setTextColor(color);
+        albumTitle.setTextColor(color);
+        btnRepeat.setColorFilter(color);
+        btnShuffle.setColorFilter(color);
     }
 
     private void initGestureDetector() {
