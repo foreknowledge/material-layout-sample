@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         findViews();
         initViews();
-        setHalfScreenWidth();
+        setScreenWidth();
 
         setTouchEvent();
     }
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         textTotalSeconds.setText(convertTimeToText(progressState.getTotalPlayTime()));
     }
 
-    private void setHalfScreenWidth() {
+    private void setScreenWidth() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         screenWidth = displayMetrics.widthPixels;
