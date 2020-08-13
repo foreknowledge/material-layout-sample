@@ -3,10 +3,12 @@ package com.ellie.materialdesignex;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -21,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
     private final static int INIT_PROGRESS = 65;
 
     private int screenWidth;
+    private GestureDetectorCompat imageGestureDetector;
     private GestureDetectorCompat textGestureDetector;
     private GestureDetectorCompat progressGestureDetector;
 
     private MusicPlayer musicPlayer;
     private ColorChanger colorChanger = new ColorChanger();
+
+    private ImageView albumImage;
 
     private TextView musicTitle;
     private TextView albumTitle;
@@ -49,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void findViews() {
+        albumImage = findViewById(R.id.albumImage);
+
         musicTitle = findViewById(R.id.musicTitle);
         albumTitle = findViewById(R.id.albumTitle);
         btnRepeat = findViewById(R.id.btnRepeat);
@@ -74,15 +81,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTouchEvent() {
         initGestureDetectors();
+        setImageEvent();
         setTextEvent();
+    }
+
+    private void setImageEvent() {
+        albumImage.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return !imageGestureDetector.onTouchEvent(event);
+            }
+        });
     }
 
     private void setTextEvent() {
         View.OnTouchListener textTouchListener = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                textGestureDetector.onTouchEvent(event);
-                return true;
+                return !textGestureDetector.onTouchEvent(event);
             }
         };
 
@@ -90,9 +106,36 @@ public class MainActivity extends AppCompatActivity {
         albumTitle.setOnTouchListener(textTouchListener);
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        return !progressGestureDetector.onTouchEvent(event);
+    }
+
     private void initGestureDetectors() {
+        initImageGestureDetector();
         initTextGestureDetector();
         initProgressGestureDetector();
+    }
+
+    private void initImageGestureDetector() {
+        imageGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public void onLongPress(MotionEvent e) {
+                Log.d(TAG, "long press");
+            }
+
+            @Override
+            public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+                Log.d(TAG, "onScroll");
+                return false;
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                Log.d(TAG, "onFling");
+                return false;
+            }
+        });
     }
 
     private void initTextGestureDetector() {
@@ -177,11 +220,5 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return "0" + minutes + ":" + txtSeconds;
-    }
-
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        progressGestureDetector.onTouchEvent(event);
-        return false;
     }
 }
