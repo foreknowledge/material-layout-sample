@@ -94,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         // Progress Gesture Detector 에게 터치 이벤트 위임.
-        // Detector가 이벤트 처리를 안했으면 true를 반환한다.
-        return !progressGestureDetector.onTouchEvent(event);
+        progressGestureDetector.onTouchEvent(event);
+
+        return true;
     }
 
     //----------------------------------------------------------
@@ -165,8 +166,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 // Image Gesture Detector 에게 터치 이벤트 위임.
-                // Detector가 이벤트 처리를 안했으면 true를 반환한다.
-                return !imageGestureDetector.onTouchEvent(event);
+                imageGestureDetector.onTouchEvent(event);
+
+                return true;
             }
         });
     }
@@ -179,8 +181,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 // Text Gesture Detector 에게 터치 이벤트 위임.
-                // Detector가 이벤트 처리를 안했으면 true를 반환한다.
-                return !textGestureDetector.onTouchEvent(event);
+                textGestureDetector.onTouchEvent(event);
+
+                return true;
             }
         };
 
@@ -208,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 // 튕기기 제스처를 하면 이미지를 바꾼다.
                 changeAlbumImage();
+
                 return false;
             }
         });
@@ -230,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onDown(MotionEvent e) {
                 // 텍스트 터치하면 랜덤한 색상으로 변경.
                 changeTextColors(colorProvider.getRandomColor());
+
                 return false;
             }
 
@@ -266,7 +271,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Text의 색상을 color로 바꾼다.
+     * Text의 색상을 지정한 color로 바꾼다.
      */
     private void changeTextColors(int color) {
         musicTitle.setTextColor(color);
