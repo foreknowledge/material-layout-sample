@@ -13,13 +13,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GestureDetectorCompat;
 
+import petrov.kristiyan.colorpicker.ColorPicker;
+
 @SuppressLint("ClickableViewAccessibility")
 public class MainActivity extends AppCompatActivity {
     private final static String TAG = "MainActivity";
     private final static int INIT_PROGRESS = 65;
 
     private int screenWidth;
-    private GestureDetectorCompat gestureDetector;
+    private GestureDetectorCompat progressGestureDetector;
+    private GestureDetectorCompat textGestureDetector;
+
     private MusicPlayer musicPlayer;
     private ColorChanger colorChanger = new ColorChanger();
 
@@ -70,16 +74,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void setTouchEvent() {
         setTextEvent();
-        initGestureDetector();
+        initGestureDetectors();
     }
 
     private void setTextEvent() {
         View.OnTouchListener textTouchListener = new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    changeTextColors();
-                }
+                textGestureDetector.onTouchEvent(event);
                 return true;
             }
         };
@@ -88,16 +90,8 @@ public class MainActivity extends AppCompatActivity {
         albumTitle.setOnTouchListener(textTouchListener);
     }
 
-    private void changeTextColors() {
-        int color = colorChanger.getRandomColor();
-        musicTitle.setTextColor(color);
-        albumTitle.setTextColor(color);
-        btnRepeat.setColorFilter(color);
-        btnShuffle.setColorFilter(color);
-    }
-
-    private void initGestureDetector() {
-        gestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
+    private void initGestureDetectors() {
+        progressGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
             @Override
             public boolean onDoubleTap(MotionEvent e) {
                 int halfScreenWidth = screenWidth / 2;
@@ -111,6 +105,19 @@ public class MainActivity extends AppCompatActivity {
                 textCurrentSeconds.setText(convertTimeToText(musicPlayer.getCurrentPlayTime()));
 
                 return false;
+            }
+        });
+
+        textGestureDetector = new GestureDetectorCompat(this, new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDown(MotionEvent e) {
+                changeTextColors(colorChanger.getRandomColor());
+                return false;
+            }
+
+            @Override
+            public void onLongPress(MotionEvent e) {
+                showColorDialog();
             }
         });
     }
@@ -127,10 +134,32 @@ public class MainActivity extends AppCompatActivity {
         return "0" + minutes + ":" + txtSeconds;
     }
 
+    private void showColorDialog() {
+        final ColorPicker colorPicker = new ColorPicker(this);
+
+        colorPicker.setColors(colorChanger.getColorArray())
+                .setColumns(5)
+                .setOnChooseColorListener(new ColorPicker.OnChooseColorListener() {
+                    @Override
+                    public void onChooseColor(int position, int color) {
+                        changeTextColors(color);
+                    }
+
+                    @Override
+                    public void onCancel() { }
+                }).show();
+    }
+
+    private void changeTextColors(int color) {
+        musicTitle.setTextColor(color);
+        albumTitle.setTextColor(color);
+        btnRepeat.setColorFilter(color);
+        btnShuffle.setColorFilter(color);
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        gestureDetector.onTouchEvent(event);
-
+        progressGestureDetector.onTouchEvent(event);
         return false;
     }
 }
