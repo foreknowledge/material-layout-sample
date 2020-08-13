@@ -19,6 +19,8 @@ import petrov.kristiyan.colorpicker.ColorPicker;
 @SuppressLint("ClickableViewAccessibility")
 public class MainActivity extends AppCompatActivity {
     private final static int INIT_PROGRESS = 65;
+    private final static int SKIP_UNIT = 10;
+    private final static int TOTAL_PLAY_TIME = 5 * 60;
 
     private int screenWidth;
     private GestureDetectorCompat imageGestureDetector;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageProvider imageProvider;
     private ColorProvider colorProvider = new ColorProvider();
-    private ProgressState progressState = new ProgressState();
+    private ProgressTimeConverter progressTimeConverter = new ProgressTimeConverter(TOTAL_PLAY_TIME);
 
     private ImageView albumImage;
 
@@ -69,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
         imageProvider = new ImageProvider(this);
         albumImage.setImageDrawable(imageProvider.getFirstImage());
 
-        progressState.setProgress(INIT_PROGRESS);
-        progressBar.setProgress(progressState.getProgress());
-        textCurrentSeconds.setText(convertTimeToText(progressState.getCurrentPlayTime()));
-        textTotalSeconds.setText(convertTimeToText(progressState.getTotalPlayTime()));
+        progressTimeConverter.setProgress(INIT_PROGRESS);
+        progressBar.setProgress(progressTimeConverter.getProgress());
+        textCurrentSeconds.setText(convertTimeToText(progressTimeConverter.getCurrentPlayTime()));
+        textTotalSeconds.setText(convertTimeToText(TOTAL_PLAY_TIME));
     }
 
     private void setScreenWidth() {
@@ -177,9 +179,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onDoubleTap(MotionEvent e) {
                 int halfScreenWidth = screenWidth / 2;
                 if (e.getX() < halfScreenWidth) {
-                    progressState.skipAgo();
+                    progressTimeConverter.skipAgo(SKIP_UNIT);
                 } else {
-                    progressState.skipLater();
+                    progressTimeConverter.skipLater(SKIP_UNIT);
                 }
 
                 applyChangedProgress();
@@ -192,15 +194,15 @@ public class MainActivity extends AppCompatActivity {
                 float curX = e2.getX();
                 int progress = (int) ((curX / screenWidth) * 100);
 
-                progressState.changeProgress(progress);
+                progressTimeConverter.setProgress(progress);
                 applyChangedProgress();
 
                 return false;
             }
 
             private void applyChangedProgress() {
-                progressBar.setProgress(progressState.getProgress());
-                textCurrentSeconds.setText(convertTimeToText(progressState.getCurrentPlayTime()));
+                progressBar.setProgress(progressTimeConverter.getProgress());
+                textCurrentSeconds.setText(convertTimeToText(progressTimeConverter.getCurrentPlayTime()));
             }
         });
     }
